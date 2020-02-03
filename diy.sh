@@ -28,7 +28,7 @@ echo '下载ServerChan'
 git clone https://github.com/tty228/luci-app-serverchan ../diy/luci-app-serverchan
 
 echo '下载frp模块'
-git clone https://github.com/kuoruan/openwrt-frp ../diy/frp
+git clone https://github.com/vseal001/openwrt-frps ../diy/frps
 
 echo '下载frps图形'
 git clone https://github.com/lwz322/luci-app-frps ../diy/luci-app-frps
