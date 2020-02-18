@@ -78,6 +78,11 @@ jobs:
         cd lede
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+      with:
+        path: lede_modules
+        key: ${{ runner.OS }}-lede-cache-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-lede-cache-
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
