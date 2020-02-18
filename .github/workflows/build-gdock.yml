@@ -73,16 +73,20 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Build
+    - name: Build Setting
       run: |
         cd lede
+        $myflag=0
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
-      with:
-        path: lede_modules
-        key: ${{ runner.OS }}-lede-cache-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-lede-cache-
+        
+        
+     - name: Build Retry       
+        if: myflag==0
+        run: |
+        make -j$(nproc) V=s
+        $myflag=1
+
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
