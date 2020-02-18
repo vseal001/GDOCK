@@ -80,10 +80,9 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
         
-        
-     - name: Build Retry       
-        if: myflag==0
-        run: |
+    - name: Build Retry       
+      if: myflag==0
+      run: |
         make -j$(nproc) V=s
         $myflag=1
 
